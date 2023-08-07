@@ -1,0 +1,10 @@
+O QUE O NODE NÃO É:
+
+	- Não é uma linguagem de programação;
+	- Não é um framework;
+	- Não é uma biblioteca
+
+O QUE É NODE:
+É um ambiente de execulção de JavaScript, que permite execultar códigos JavaScript fora no Navegador/Browser.
+
+Com ele podemos desenvolver aplicações web fullstack em JavaScript.
