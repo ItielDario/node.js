@@ -1,0 +1,23 @@
+// O NODE CONTÉM UM CONJUNTO DE MÓDULOS QUE ESTÃO DISPONIVEL PARA UTILIZAÇÃO SEM PRECISAR INSTALAR NADA
+// EXEMPLOS (https://www.w3schools.com/nodejs/ref_modules.asp):
+//      - FS
+//      - ASSER
+//      - HTTP
+//      - STREAM
+//      - ENTRE OUTROS
+
+const os = require('os'); // ESTE MÓDULO PERMITE INTERAGIR COM INFORMAÇÕES DO SISTEMA OPERACIONAL EM QUE O NODE ESTÁ RODANDO
+
+console.log(os.platform()); // EXIBE A PLATAFORMA EM QUE O SISTEMA OPEACIONAL ESTA EXCULTANDO ESTE CÓDIGO (WINDOWNS, LINUX)
+
+console.log(os.version()); // MOSTA A VERÇÃO DO SISTEMA OPERACIONAL
+
+console.log(os.cpus()); // EXIBE INFORMAÇÕES SOBRE OS PROCESSADORES DISPONIVEIS NO SISTEMA
+
+console.log(os.homedir()); // EXIBE O DIRETÓRIO HOME DO SISTEMA
+
+console.log(os.freemem()); // RETORNA A QUANTIDADE DE MEMÓRIA DISPONIVEL
+
+console.log(os.totalmem()); // MOSTRA O TOTAL DE MEMÓRIA DO SISTEMA
+
+console.log(os.machine());  // EXIBE INFORMAÇÕES SOBRE A ARQUITETURA DA MAQUINA
