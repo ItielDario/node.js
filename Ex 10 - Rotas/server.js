@@ -14,15 +14,15 @@ const server = http.createServer((req, res) => {
     switch(req.url){  // VERIFICA A URL CHAMADA
 
         case '/':    // SE A URL CHAMADA FOR A RAIZ '/' EXIBE O ARQUIVO 'INDEX.HTML' 
-            html_file = './wiews/index.html';
+            html_file = './views/index.html';
             break;
         
         case '/about':   // SE A URL CHAMADA FOR '/ABOUT' EXIBE O ARQUIVO 'ABOUT.HTML'
-            html_file = './wiews/about.html';
+            html_file = './views/about.html';
             break;
 
         default:   // SE A URL CHAMADA NÃO FOR NENHUMA DAS DUAS A PÁGINA EXIBE O ARQUIVO '404.HTML'
-            html_file = './wiews/404.html';
+            html_file = './views/404.html';
             break;       
     };
 
