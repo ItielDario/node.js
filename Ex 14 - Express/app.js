@@ -19,18 +19,44 @@ app.get('/about', (req, res) => {  // QUANDO CHAMADA A URL '/ABOUT' EXECULTA A F
 });
 
 
-// EXIBINDO UMA PÁGINA HTML
+
+// EXIBINDO UMA PÁGINA HTML -----------------------------------------------------------------------------------------------------
 // HÁ DUAS FORMAS:
 
 // 1º FORMA -> INDICAR O CAMINHO ABSOLUTO DO ARQUIVO
 app.get('/contact', (req, res) => {
-    res.sendFile('C:/Users/itiel/OneDrive/Documentos/Estudos/Estudos/node.js/Ex 14 - Express/views/contact.html'); // CAMINHO ABSOLUTO
+    // res.sendFile('C:/Users/itiel/OneDrive/Documentos/Estudos/Estudos/node.js/Ex 14 - Express/views/contact.html'); // CAMINHO ABSOLUTO
+    res.sendFile('./views/contact.html', { root: __dirname });
+    res.status(200); // DEFININDO O STATUS CODE
 });
 
 // 2º FORMA -> ESPECIFICAR A RAIZ E DEFINIR AS SUAS RELAÇÕES
 app.get('/info', (req, res) => {
 
     // SELECIONA A PASTA ONDE ESTA SENDO EXECULTADA O APP.JS (__DIRNAME) E DEFINE ESTA" COMO A RAIZ.
-    // E ESPECIFICA O CAMINHO DO ARQUIVO (./VIEWS/INFO.HTML) COMO EXTENÇÃO DA RAIZ -> "__DIRNAME/VIEWS/INFO.HTML"
+    // DEPOIS ESPECIFICA O CAMINHO DO ARQUIVO (./VIEWS/INFO.HTML) COMO EXTENÇÃO DA RAIZ -> "__DIRNAME/VIEWS/INFO.HTML"
     res.sendFile('./views/info.html', { root: __dirname });  
-})
+    res.status(200); // DEFININDO O STATUS CODE
+});
+
+app.get('/services', (req, res) => {
+    res.sendFile('./views/services.html', { root: __dirname });
+    res.status(200); // DEFININDO O STATUS CODE
+});
+
+
+
+// REDIRECIONAMENTO -------------------------------------------------------------------------------------------------------------
+app.get('/telefone', () => { // SE O USUÁRIO DIGITAR ESSA URL
+    app.redirect('./contact');  // SERÁ REDIRECIONADO PARA A PÁGINA 'CONTACT' (MUDA A URL PARA LOCALHOST:3000/CONTACT E CHAMA A FUNÇÃO DO CONTACT)
+    res.status(302); // DEFININDO O STATUS CODE
+});
+
+
+
+// ERROR 404 --------------------------------------------------------------------------------------------------------------------------
+app.use((req, res) => { // USE -> DEFINE REGRAS DE NEGÓCIO ENTRE A REQUISIÇÃO E A RESPOSTA (ANTES DE EXIBIR A RESPOSTA CHAMA A FUNÇÃO)
+    // TEM QUE ESTAR NO FINAL, POIS NÃO ESPECIFICA A ROTA (OU SEJA, SE O USUÁRIO DIGITAR QUALQUER ROTA DIFERENTE DAS ACIMA EXECULTA O 'USE')
+    res.sendFile('./views/404.html', { root: __dirname });
+    res.status(404); // DEFININDO O STATUS CODE
+})  
