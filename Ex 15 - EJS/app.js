@@ -3,62 +3,38 @@
 
 const express = require('express');
 
-// CRIANDO UMA APLICAÇÃO EXPRESS
 const app = express()  
+
 
 // REGISTRAR UM TEMPLATE ENGINE (VIEW ENGINE)
 app.set('view engine', 'ejs'); // DEFINE QUE A FORMA QUE IREMOS CRIAR ARQUIVOS DINÂMICOS É ATRAVES DO EJS (SET -> FAZ UMA CONFIGURAÇÃO GLOBAL)
 
-// ESCUTAANDO A REQUISIÇÃO NA PORTA 3000
+
 app.listen(3000);
 
+
 // CRIANDO AS ROTAS
-app.get('/', (req, res) => {  
-    res.send('<h1>Aplicação com express</h1>')  
+app.get('/', (req, res) =>{
+    res.render('home', { title: "Home" });  // PASSA UM OBJETO COMO PARÂMETRO PARA O 'HOME.EJS'
 });
 
-app.get('/about', (req, res) => {  
-    res.send('<h1>Sobre nós</h1>');
-});
-
-
-
-// EXIBINDO UMA PÁGINA HTML -----------------------------------------------------------------------------------------------------
-
-// 1º FORMA -> INDICAR O CAMINHO ABSOLUTO DO ARQUIVO
 app.get('/contact', (req, res) => {
-    res.sendFile('./views/contact.html', { root: __dirname });
+    res.render('contact', { title: "Contato" })
     res.status(200); 
 });
 
-// 2º FORMA -> ESPECIFICAR A RAIZ E DEFINIR AS SUAS RELAÇÕES
 app.get('/info', (req, res) => {
-    res.sendFile('./views/info.html', { root: __dirname });  
+    res.render('info', { title: "Informações" });  
     res.status(200); 
 });
 
 app.get('/services', (req, res) => {
-    res.sendFile('./views/services.html', { root: __dirname });
+    res.render('services', { title: "Serviços" });
     res.status(200); 
 });
 
 
-// EJS
-app.get('/teste-ejs', (req, res) => {
-    res.render('inicio')  // PRIMEIRO ANALISA O CONTEÚDO DO ARQUIVO E DEPOIS EXIBE (PROCURA NA PASTA VIEWS UM ARQUIVO COM EXTENÇÃO EJS)
-});
-
-
-// REDIRECIONAMENTO -------------------------------------------------------------------------------------------------------------
-app.get('/telefone', () => { 
-    app.redirect('./contact'); 
-    res.status(302); 
-});
-
-
-
-// ERROR 404 --------------------------------------------------------------------------------------------------------------------------
+// ERROR 404
 app.use((req, res) => { 
-    res.sendFile('./views/404.html', { root: __dirname });
-    res.status(404); 
-})  
+    res.status(404).render('404', { title: "ERROR - 404" }); 
+});
