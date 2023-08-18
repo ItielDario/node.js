@@ -15,7 +15,15 @@
     </div>
 
     <h1>Serviços</h1>
-    <p>quidem tempora, asperiores obcaecati praesentium? Doloribus fuga explicabo vel minima. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam minima autem nihil officiis laudantium quisquam! Voluptatem earum quisquam ratione, atque ut, odio quae tempora nulla id sit fugit, omnis est!</p>
-    <p>Animi voluptas praesentium dolores ea fuga repellendus? Adipisci illo ipsa magni distinctio ratione, voluptatum dolorem eveniet consequuntur, atque quia, temporibus voluptatibus eum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis facilis consequuntur vero. Laboriosam, eius corrupti perferendis ullam voluptatem dolorem natus quidem tempora, asperiores obcaecati praesentium? Doloribus fuga explicabo vel minima. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam minima autem nihil officiis laudantium quisquam! Voluptatem earum quisquam ratione, atque ut, odio quae tempora nulla id sit fugit, omnis est! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sapiente, tempore, eaque eos et asperiores quaerat optio odio fugiat similique quidem consequatur blanditiis nisi excepturi corporis voluptates. Vero, soluta voluptatibus.</p>
-</body>
+    
+    <% if(servicos.length > 0){ %>
+        <% servicos.forEach(servicos => { %>
+            <h3><%= servicos.titulo_servico %></h3>
+            <p><%= servicos.descricao %></p>
+            <hr>
+        <% }) %>
+    <% } else { %>
+        <p>Não foram encontrados serviços!</p>  
+    <% } %>
+
 </html>
