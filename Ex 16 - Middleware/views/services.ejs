@@ -1,0 +1,16 @@
+<%- include('./partials/header.ejs') %> <!-- RENDERIZA UM CONTEÚDO HTML COMO HTML -->
+<%- include('./partials/nav.ejs') %> 
+
+    <h1>Serviços</h1>
+
+    <% if(servicos.length > 0){ %>
+        <% servicos.forEach(servicos => { %>
+            <h3><%= servicos.titulo_servico %></h3>
+            <p><%= servicos.descricao %></p>
+            <hr>
+        <% }) %>
+    <% } else { %>
+        <p>Não foram encontrados serviços!</p>  
+    <% } %>
+    
+<%- include('./partials/footer.ejs') %> 

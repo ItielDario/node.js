@@ -1,0 +1,61 @@
+// MIDDLEWARE -> SÃO CÓDIGOS QUE SÃO EXECULTADOS ENTRE A REQUISIÇÃO E A RESPOSTA
+/*
+    - REGISTRO DE LOGS 
+    - FUNCIONALIDADES DE AUTENTICAÇÃO E AUTORIZAÇÃO
+    - VALIDAÇÃO E PREPARAÇÃO DE DADOS JSON A PARTIR DO REQUEST
+    - RESPONDER ERROS DA APLICAÇÃO
+*/ 
+
+const express = require('express');
+
+const app = express()  
+
+app.set('view engine', 'ejs'); 
+
+app.listen(3000);
+
+
+// MIDDLEWARE
+app.use((req, res, next) => {  // COMO NÃO ESPECIFICA A ROTA, SEMPRE QUE SOLICITADO 'LOCALHOST:3000' A FUNÇÃO SERÁ EXECULTADA 
+
+    console.log('Novo pedio');
+    console.log('Host: ' + req.hostname);
+    console.log('Path: ' + req.path);
+    console.log('Method: ' + req.method);
+
+    // TEMOS QUE DEFINIR O QUE FAZER DEPOIS POIS O SERVIDOR FICA AGUANDANDO UMA RESPOSTA A SER ENTREGUE
+    next();  // INDICA AO SERVIDOR QUE DEPOIS DE EXECULTAR A FUNÇÃO PODERÁ CONTINUAR EXECULTANDO O CÓDIGO ABAIXO
+});
+
+
+// CRIANDO AS ROTAS
+app.get('/', (req, res) =>{
+    res.render('home', { title: "Home" });  
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact', { title: "Contato" })
+    res.status(200); 
+});
+
+app.get('/info', (req, res) => {
+    res.render('info', { title: "Informações" });  
+    res.status(200); 
+});
+
+app.get('/services', (req, res) => {
+
+    const servicos = [
+        {titulo_servico: 'Desenvolvimento Web', descricao: 'Desenvolvemos páginas e apps web'},
+        {titulo_servico: 'Desenvolvimento Desktop', descricao: 'Desenvolvemos aplicações para Desktop'},
+        {titulo_servico: 'Desenvolvimento Mobile', descricao: 'Desenvolvemos apps mobile para Android e para IOS'}
+    ];
+
+    res.render('services', { title: "Serviços", servicos });
+    res.status(200); 
+});
+
+// ERROR 404
+app.use((req, res) => {  // MIDDLEWARE
+    res.status(404).render('404', { title: "ERROR - 404" }); 
+});
