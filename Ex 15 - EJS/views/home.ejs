@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>  <!-- RECEBE UM OBJETO PASSADO PELO SERVIDOR -->
-</head>
-<body>
+<%- include('./partials/header.ejs') %> <!-- RENDERIZA UM CONTEÚDO HTML COMO HTML -->
 
-    <!-- <% const nome = "Itiel" %> # EXECULTA UM CÓDIGO JAVACRSIPT NO HTML 
-    <% const sobrenome = "Dario" %>
+<!-- <% const nome = "Itiel" %> EXECULTA UM CÓDIGO JAVACRSIPT NO HTML 
+<% const sobrenome = "Dario" %>
 
-    <h1>HOME</h1>
-    <p><%= `${nome} ${sobrenome}` %></p> # EXIBE UM CÓDIGO JS NO HTML -->
+<h1>HOME</h1>
+<p><%= `${nome} ${sobrenome}` %></p> # EXIBE UM CÓDIGO JS NO HTML (E TRANSFORMA EM UMA STRING)-->
 
-    <div>
-        <a href="/">Home</a> &nbsp;| &nbsp; 
-        <a href="contact">Contato</a> &nbsp;| &nbsp;
-        <a href="services">Serviços</a> &nbsp;| &nbsp;
-        <a href="info">Informações</a> &nbsp;| &nbsp;
-    </div>
+<h1>HOME</h1>
 
-    <h1>HOME</h1>
-  
-</body>
-</html>
 

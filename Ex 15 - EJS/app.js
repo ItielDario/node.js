@@ -34,7 +34,7 @@ app.get('/services', (req, res) => {
         {titulo_servico: 'Desenvolvimento Web', descricao: 'Desenvolvemos páginas e apps web'},
         {titulo_servico: 'Desenvolvimento Desktop', descricao: 'Desenvolvemos aplicações para Desktop'},
         {titulo_servico: 'Desenvolvimento Mobile', descricao: 'Desenvolvemos apps mobile para Android e para IOS'}
-    ]
+    ];
 
     res.render('services', { title: "Serviços", servicos });
     res.status(200); 

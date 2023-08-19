@@ -1,29 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title> <!-- RECEBE UM OBJETO PASSADO PELO SERVIDOR -->
-</head>
-<body>
+<h1>Serviços</h1>
 
-    <div>
-        <a href="/">Home</a> &nbsp;| &nbsp; 
-        <a href="contact">Contato</a> &nbsp;| &nbsp;
-        <a href="services">Serviços</a> &nbsp;| &nbsp;
-        <a href="info">Informações</a> &nbsp;| &nbsp;
-    </div>
-
-    <h1>Serviços</h1>
-    
-    <% if(servicos.length > 0){ %>
-        <% servicos.forEach(servicos => { %>
-            <h3><%= servicos.titulo_servico %></h3>
-            <p><%= servicos.descricao %></p>
-            <hr>
-        <% }) %>
-    <% } else { %>
-        <p>Não foram encontrados serviços!</p>  
-    <% } %>
-
-</html>
+<% if(servicos.length > 0){ %>
+    <% servicos.forEach(servicos => { %>
+        <h3><%= servicos.titulo_servico %></h3>
+        <p><%= servicos.descricao %></p>
+        <hr>
+    <% }) %>
+<% } else { %>
+    <p>Não foram encontrados serviços!</p>  
+<% } %>
