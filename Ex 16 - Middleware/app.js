@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.listen(3000);
 
 
-// MIDDLEWARE
+// MIDDLEWARE ------------------------------------------------------------------------------------------------------------------
 app.use((req, res, next) => {  // COMO NÃO ESPECIFICA A ROTA, SEMPRE QUE SOLICITADO 'LOCALHOST:3000' A FUNÇÃO SERÁ EXECULTADA 
 
     console.log('Novo pedio');
@@ -28,10 +28,19 @@ app.use((req, res, next) => {  // COMO NÃO ESPECIFICA A ROTA, SEMPRE QUE SOLICI
 });
 
 
-// CRIANDO AS ROTAS
+// CRIANDO AS ROTAS ------------------------------------------------------------------------------------------------------------
 app.get('/', (req, res) =>{
     res.render('home', { title: "Home" });  
-});
+}); // DEPOIS DE DAR A RESPOSTA NÃO CONTINUA O CÓDIGO ABAIXO
+
+
+app.use((req, res, next) => { 
+    
+    // ESSA MENSAGEM SO SERÁ EXIBIDA PARA AS ROTAS ABAIXO DESTE 'USE'
+    console.log('Segundo Middleware!');
+    next();
+})
+
 
 app.get('/contact', (req, res) => {
     res.render('contact', { title: "Contato" })
@@ -56,6 +65,6 @@ app.get('/services', (req, res) => {
 });
 
 // ERROR 404
-app.use((req, res) => {  // MIDDLEWARE
+app.use((req, res) => {  // (MIDDLEWARE) SE NENHUMA DESTAS ROTAS ACIMA FOREM CHAMADAS EXECULTA ESSA FUNÇÃO
     res.status(404).render('404', { title: "ERROR - 404" }); 
 });
