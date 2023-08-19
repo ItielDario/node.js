@@ -37,6 +37,11 @@ app.use((req, res, next) => {  // COMO NÃO ESPECIFICA A ROTA, SEMPRE QUE SOLICI
 app.use(morgan('tiny')); // EXIBE INFORMAÇÕES BÁSICAS SOBRE A REQUISIÇÃO (UTILIZA O MORGAN NO FORMATO 'TINY')
 app.use(morgan('dev')); // O FORMATO DEV EXIBE INFORMAÇÕES NO SISTEMA COM MAIS DETALHES 
 app.use(morgan(' :status :res[content-length] - :response-time ms :method :url')); // DEFINE QUAIS E COMO AS INFORMAÇÕES SERÃO EXIBIDAS 
+app.use(morgan('O método é: :method'));
+
+
+// PARA ACESSAR ARQUIVOS ESTÁTICOS É PRECISO DEFINIR ONDE ESSES ARQUIVOS ESTÃO (FACILITA A PROCURA DOS ARQUIVOS NO SERVIDOR)
+app.use(express.static('public')); // DEFINE QUE A PASTA 'PUCLIC' É A RAIZ DOS ARQUIVOS ESTÁTICOS 
 
 
 
