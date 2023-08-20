@@ -62,3 +62,20 @@ app.get('/clientes/:id/:nome/:idade/:peso', (req, res) => {  // EX -> http://loc
 app.get('/soma/:valor1/:valor2', (req, res) => {
     res.send(`A soma de ${req.params.valor1} + ${req.params.valor2} é: ${+req.params.valor1 + +req.params.valor2}`);
 });
+
+app.get('/voo/:de-:para', (req, res) => { // http://localhost:8080/voo/brasil-bangkok
+    res.send(`O voo é de ${req.params.de} para ${req.params.para} ` );  // {"de":"brasil","para":"bangkok"}
+});
+
+app.get('/loja/:idrua-:cidade', (req, res) => { // http://localhost:8080/loja/2-Pinheiro
+    
+    const listaRuas = [
+        'Rua 1',
+        'Rua 2',
+        'Rua 3',
+        'Rua 4',
+        'Rua 5',
+    ];
+
+    res.send(`A loja escolhida foi a da cidade ${req.params.cidade} na ${listaRuas[req.params.idrua]}`);
+});
