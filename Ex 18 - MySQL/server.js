@@ -14,7 +14,7 @@ const conexao = mysql.createConnection({  // CRIA CONEXÃO COM O BANCO DE DADOS
     host: 'localhost',  // O ENDEREÇO DO SERVIDOR DO BANCO DE DADOS
     user: 'root',  // NOME DO USUÁRIO PARA A AUTENTICAÇÃO
     password: '',  // SENHA DO USUÁRIO PARA AUTENTICAÇÃO
-    database: 'blog'  // NOME DO BANCO DE DADOS QUE DESEJA CONECTAR
+    database: 'blogs'  // NOME DO BANCO DE DADOS QUE DESEJA CONECTAR
 });
 
 
@@ -23,11 +23,16 @@ app.get('/', (req, res) => {
     
     // SELECIONA TODOS OS DADOS DA TEBELA 'users'
     conexao.query("SELECT * FROM users", (erro, resultado) => { // EXECULTA CONSULTAS SQL NO BANCO DE DADOS (PERMITE ESCREVE UM SQL LITERAL E DEPOIS EXECULTA UMA FUNÇÃO)  
-        if(erro){
+
+        
+        if(erro){  // SE DER ALGUM ERRO -> 
+            console.log('Deu ruim! -> ', erro.message);
+            console.log('Deu ruim! -> ', erro.code);
+            console.log('Deu ruim! -> ', erro.errno);
+            console.log('Deu ruim! -> ', erro.sqlMessage);
             res.send('Deu ruim! -> ', erro);
         }
-        else{
-            res.send(resultado);
-        }
+
+        res.send(resultado[2].username);
     });  
 });
