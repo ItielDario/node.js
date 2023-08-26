@@ -19,6 +19,32 @@ const conexao = mysql.createConnection({  // CRIA CONEXÃO COM O BANCO DE DADOS
 
 
 // ROUTES
+
+// MYSQL INSERT
+app.get('/', (req, res) => {
+
+    // INSERINDO CONJUNTO DE DADOS
+    let values = [
+        ['0', 'Don Pedro 1', '1500-01-01 10-20-01'],
+        ['0', 'Don Pedro 2', '1510-01-01 10-20-02'],
+        ['0', 'Don Pedro 3', '1520-01-01 10-20-03'],
+        ['0', 'Don Pedro 4', '1530-01-01 10-20-04'],
+        ['0', 'Don Pedro 5', '1531-01-01 10-20-05']
+    ] 
+
+    conexao.query('INSERT INTO users VALUES ?', [values], (err, resp) => {
+
+        if(err){
+            console.log('DEU RUIM -> ', err);
+        }
+        else{
+            res.send('TAÍ MEU FI!!!');
+        }
+    });
+});
+
+
+// PRIMEIROS TESTES 
 app.get('/', (req, res) => {
     
     // ESTABELECENDO CONEXÃO COM O SERVIDOR MYSQL
