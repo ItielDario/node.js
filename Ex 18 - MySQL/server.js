@@ -20,6 +20,25 @@ const conexao = mysql.createConnection({  // CRIA CONEXÃO COM O BANCO DE DADOS
 
 // ROUTES
 
+// DADOS POR PARÂMETRO
+app.get('/', (req, res) => {
+    res.send('Ok');
+});
+
+app.get('/users/:id/', (req, res) => {
+    let id = req.params.id;
+    
+    conexao.query('SELECT * FROM users WHERE id = ?', id, (error, results) => {
+        if(error){
+            console.log('DEU RUIM -> ', error.sqlMessage);
+        }
+        else{
+            res.send(results);
+        }
+    });
+});
+
+
 // MYSQL INSERT
 app.get('/', (req, res) => {
 
