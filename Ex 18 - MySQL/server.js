@@ -22,21 +22,52 @@ const conexao = mysql.createConnection({  // CRIA CONEXÃO COM O BANCO DE DADOS
 
 // DADOS POR PARÂMETRO
 app.get('/', (req, res) => {
-    res.send('Ok');
+    
+    res.json(api_result('success', 'success', []));
 });
 
-app.get('/users/:id/', (req, res) => {
+app.get('/users/:id', (req, res) => {
+
     let id = req.params.id;
     
     conexao.query('SELECT * FROM users WHERE id = ?', id, (error, results) => {
+
         if(error){
-            console.log('DEU RUIM -> ', error.sqlMessage);
+            res.json(api_result('error', error.sqlMessage, []));
         }
         else{
-            res.send(results);
+            res.json(api_result('success', 'success', results));
         }
     });
 });
+
+function api_result(status, message, data){
+    
+    if(data.length == 0){
+        message = 'ID inválido';
+    }
+
+    return {
+        status: status,
+        message: message,
+        results: data
+    };
+}
+
+/*
+app.get('/users/:id/', (req, res) => {
+    let id = req.params.id;
+    
+    conexao.query('SELECT * FROM usersa WHERE id = ?', id, (error, results) => {
+        if(error){
+            console.log('DEU RUIM -> ', error.message);
+        }
+        else{
+            res.json(results);
+        }
+    });
+});
+*/
 
 
 // MYSQL INSERT
