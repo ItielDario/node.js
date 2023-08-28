@@ -17,11 +17,17 @@
                 <h1>Lista de tarefas</h1>
             </article>
 
+            <section id="msg">
+                <% if(typeof validacao != 'undefined') { %>
+                  <aside class="alert <%= validacao %>"><%= text %></aside>
+                <% } %>
+            </section>
+
             <section  class="box-form">  
                 <form action="/" method="post">            
-                    <input type="text" class="form-control" id="descricao_tarefa" name="descricao_tarefa" placeholder="Digite uma tarefa">
+                    <input type="text" class="form-control" id="descricaoTarefa" name="descricaoTarefa" placeholder="Digite uma tarefa">
                 
-                   <input type="submit" value="Incluir" class="btn btn-success col btn-submit">
+                   <input type="submit" id="btn-inserir" class="btn btn-success col btn-submit" value="Incluir">
                 </form>
             </section>
 
@@ -33,6 +39,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-    <!-- MEU SCRIPT -->
+    
   </body>
 </html>

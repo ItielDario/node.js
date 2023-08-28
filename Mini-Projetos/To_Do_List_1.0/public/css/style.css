@@ -32,6 +32,37 @@ main{
     text-transform: uppercase;
 }
 
+.alert{
+    border: none;
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    animation: reset 0.1s;
+}
+
+@keyframes reset {
+    0% {
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.alert-danger{
+    background-color: rgb(240, 61, 61);
+}
+
+.alert-success{
+    background-color: rgb(36, 186, 81);
+}
+
 .box-form{
     margin-top: 15px;
 }
